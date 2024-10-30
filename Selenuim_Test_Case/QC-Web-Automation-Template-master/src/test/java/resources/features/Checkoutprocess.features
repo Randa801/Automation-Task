@@ -1,0 +1,16 @@
+Feature: Valid Login and Checkout Process
+  Scenario: Login and complete checkout process
+    Given I open the login page
+    When I login with valid credentials "standard_user" and "secret_sauce"
+    Then I should be navigated to the products page
+    And I add the two most expensive products to the cart
+    When I open the cart
+    Then I should see the selected products
+    When I proceed to checkout
+    Then I should be on the checkout page
+    When I fill the checkout form with "John" "Doe" and "12345"
+    And I continue to the overview page
+    Then I should see the correct total amount before taxes
+    And I should be on the URL "https://www.saucedemo.com/checkout-step-two.html"
+    When I finish the order
+    Then I should see the order confirmation message
